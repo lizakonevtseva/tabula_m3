@@ -5,6 +5,317 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>tabula</title>
     <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="icon" href="./images/favicon.png" />
     <script src="javascripts/scripts.js"></script>
   </head>
+  <body>
+    <div class="intro-overlay" id="introOverlay" aria-hidden="false">
+      <div class="intro-inner">
+        <div class="intro-text" id="introText"></div>
+        <button
+          class="intro-btn"
+          id="introStartBtn"
+          type="button"
+          aria-label="инициировать сеанс"
+        >
+          инициировать сеанс
+        </button>
+      </div>
+    </div>
+
+    <div class="frame">
+      <div class="top-bar">личное дело</div>
+
+      <div class="content">
+        <div class="left">
+          <div class="case-number">№ 03-88-12</div>
+
+          <div
+            class="text-block typing-block"
+            id="typingText"
+            data-full-text="эмоциональный индекс: 0.76; архетип: свидетель; уровень осознанности: частичный (3/5); доминирующее состояние: усталость, потеря смысла, желание покоя."
+          ></div>
+
+          <div class="left-bottom-row">
+            <button class="btn small" id="agreementBtn">
+              <span class="btn-text">персональное соглашение</span>
+              <img
+                src="images/paper.png"
+                alt="Документ"
+                class="paper-inside-btn"
+              />
+            </button>
+
+            <img src="images/bird1.png" alt="Птица" class="bird1-img" />
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="camera-frame">
+            <img src="images/camera.png" alt="Камера" class="camera-img" />
+            <video id="video" autoplay playsinline></video>
+          </div>
+
+          <button class="btn small" id="cameraBtn">доступ к камере</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-block section2">
+      <span id="glitchText">
+        агентство рассматривает пространство как инструмент структурирования
+        поведения и перераспределения внимания. каждая зона обладает
+        регламентом, уровнем допуска и функциональной нагрузкой. новый сотрудник
+        входит в систему без права её трансформации, принимая маршруты,
+        дистанции и сценарии взаимодействия как заданные параметры. пространство
+        не декорирует процессы — оно их калибрует, ограничивает и направляет.
+        наблюдение встроено в архитектуру, а архитектура встроена в порядок
+        принятия решений. Индивидуальность не отменяется, но проходит процедуру
+        выравнивания. интеграция фиксируется не словами, а перемещениями по
+        уровням доступа. система не демонстрирует давление, она демонстрирует
+        устойчивость. чем быстрее субъект принимает пространственную логику, тем
+        менее заметным становится сам механизм управления.тогда границы
+        перестают восприниматься как ограничения и начинают работать как
+        навигационные оси. поведение становится предсказуемым не потому, что его
+        контролируют, а потому, что маршруты оптимизированы под логику системы.
+        внимание распределяется равномерно, исключая перегрузку и импровизацию.
+        со временем субъект усваивает алгоритм среды — движения становятся
+        автоматическими, решения — реактивными. пространство перестаёт быть
+        внешней структурой и превращается в продолжение внутренней дисциплины.
+      </span>
+    </div>
+
+    <section class="mechanism-block" aria-label="механизм работы">
+      <div class="mechanism-inner">
+        <div class="mechanism-photo" aria-hidden="true">
+          <img
+            id="memoryImage"
+            class="mechanism-photo-img"
+            src="images/memory1.png"
+            alt="запись 01"
+            draggable="false"
+          />
+        </div>
+
+        <nav class="mechanism-nav" aria-label="записи">
+          <button class="mechanism-num is-active" type="button" data-record="1">
+            01
+          </button>
+          <button class="mechanism-num" type="button" data-record="2">
+            02
+          </button>
+          <button class="mechanism-num" type="button" data-record="3">
+            03
+          </button>
+          <button class="mechanism-num" type="button" data-record="4">
+            04
+          </button>
+          <button class="mechanism-num" type="button" data-record="5">
+            05
+          </button>
+          <button class="mechanism-num" type="button" data-record="6">
+            06
+          </button>
+        </nav>
+
+        <div class="mechanism-right">
+          <div
+            class="mechanism-text typing-block"
+            id="memoryText"
+            data-full-text=""
+          ></div>
+
+          <div class="mechanism-side" aria-label="интерактив">
+            <button
+              class="mechanism-question"
+              id="questionTrigger"
+              type="button"
+              aria-haspopup="dialog"
+              aria-controls="questionOverlay"
+              aria-label="вопрос"
+            >
+              ?
+            </button>
+
+            <img
+              src="images/archiv.png"
+              alt="архив"
+              class="mechanism-archive"
+              id="archiveTrigger"
+              draggable="false"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="logs-strip-block" aria-label="логи">
+      <div class="logs-marquee" id="logsMarquee">
+        <div
+          class="logs-marquee-track"
+          id="logsMarqueeTrack"
+          aria-hidden="false"
+        >
+          <button
+            class="logs-item"
+            type="button"
+            data-log="stability"
+            aria-label="stability.log"
+          >
+            <img src="images/folder1.png" alt="" draggable="false" />
+            <span class="logs-label">stability.log</span>
+          </button>
+          <button
+            class="logs-item"
+            type="button"
+            data-log="introspection"
+            aria-label="introspection.log"
+          >
+            <img src="images/folder2.png" alt="" draggable="false" />
+            <span class="logs-label">introspection.log</span>
+          </button>
+          <button
+            class="logs-item"
+            type="button"
+            data-log="memorydrift"
+            aria-label="memorydrift.log"
+          >
+            <img src="images/folder3.png" alt="" draggable="false" />
+            <span class="logs-label">memorydrift.log</span>
+          </button>
+          <button
+            class="logs-item"
+            type="button"
+            data-log="decisionstate"
+            aria-label="decisionstate.log"
+          >
+            <img src="images/folder4.png" alt="" draggable="false" />
+            <span class="logs-label">decisionstate.log</span>
+          </button>
+          <button
+            class="logs-item"
+            type="button"
+            data-log="silenceprotocol"
+            aria-label="silenceprotocol.final"
+          >
+            <img src="images/folder5.png" alt="" draggable="false" />
+            <span class="logs-label">silenceprotocol.final</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sync-marquee-block" aria-label="синхронизация">
+      <div class="sync-marquee-row">
+        <div class="sync-marquee">
+          <div
+            class="sync-marquee-track sync-marquee-track--rtl"
+            id="syncMarqueeTrack1"
+          >
+            синхронизация завершится через синхронизация завершится через
+            синхронизация завершится через синхронизация завершится через
+            синхронизация завершится через синхронизация завершится через
+          </div>
+        </div>
+      </div>
+      <div class="sync-marquee-row">
+        <div class="sync-marquee">
+          <div
+            class="sync-marquee-track sync-marquee-track--ltr"
+            id="syncMarqueeTrack2"
+          >
+            синхронизация завершится через синхронизация завершится через
+            синхронизация завершится через синхронизация завершится через
+            синхронизация завершится через синхронизация завершится через
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="countdown-block" aria-label="отсчет">
+      <div class="countdown-top">
+        <div class="countdown-ticker">
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cdDays">00</div>
+            <div class="countdown-label">дней</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cdHours">12</div>
+            <div class="countdown-label">часов</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cdMinutes">44</div>
+            <div class="countdown-label">минут</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cdSeconds">19</div>
+            <div class="countdown-label">секунд</div>
+          </div>
+        </div>
+
+        <button class="countdown-stop" id="countdownStopBtn" type="button">
+          желаете остановить?
+        </button>
+      </div>
+
+      <div class="countdown-footer">
+        <div class="countdown-foot-col">
+          <div class="countdown-foot-title">студент</div>
+          <div class="countdown-foot-name">елизавета коневцева</div>
+        </div>
+        <div class="countdown-foot-col countdown-foot-col--right">
+          <div class="countdown-foot-title">куратор</div>
+          <div class="countdown-foot-name">николай цветников</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="choice-overlay" id="choiceOverlay" aria-hidden="true">
+      <div class="choice-inner">
+        <div class="choice-text" id="choiceText"></div>
+        <div class="choice-buttons" id="choiceButtons"></div>
+      </div>
+    </div>
+
+    <div
+      class="logs-windows-layer"
+      id="logsWindowsLayer"
+      aria-hidden="false"
+    ></div>
+
+    <div class="question-overlay" id="questionOverlay" aria-hidden="true">
+      <div class="question-panel" role="dialog" aria-modal="true">
+        возможно, это последнее, что ты помнишь, но, быть может, <br />
+        в коробке хранится еще больше секретов?
+      </div>
+    </div>
+
+    <div
+      class="screamer-overlay"
+      id="screamerOverlay"
+      aria-hidden="true"
+      role="dialog"
+      aria-label="screamer"
+    >
+      <img
+        src="images/screamer.png"
+        alt=""
+        class="screamer-img"
+        draggable="false"
+      />
+    </div>
+
+    <div class="agree-overlay" id="agreeOverlay" aria-hidden="true">
+      <div class="agree-panel" role="dialog" aria-modal="true">
+        <img
+          src="images/agreepaper.png"
+          alt="Персональное соглашение"
+          class="agree-paper"
+          id="agreePaperImage"
+          draggable="false"
+        />
+        <canvas class="agree-canvas" id="agreeCanvas"></canvas>
+      </div>
+    </div>
+  </body>
 </html>
